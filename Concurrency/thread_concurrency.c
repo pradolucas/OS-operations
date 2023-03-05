@@ -47,7 +47,7 @@ void *call (void *t){
     for (int i=0; i<3; i++){
         //CRITICAL REGION
         lock(&MUTEX);
-        if(aloca_recurso(wanted) == 0){ // Tenta o recurso até estar disponível
+        if(aloca_recurso(wanted) == 0){
             recs += wanted;
         }
         //CRITICAL REGION
