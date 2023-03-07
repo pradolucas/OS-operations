@@ -43,19 +43,13 @@ void *call (void *t){
     int wanted=2, recs=0;
     lock_t MUTEX;
     init(&MUTEX);
-
+    lock(&MUTEX);
+    //CRITICAL REGION
     for (int i=0; i<3; i++){
-        //CRITICAL REGION
-        lock(&MUTEX);
         if(aloca_recurso(wanted) == 0){
             recs += wanted;
         }
-        //CRITICAL REGION
-        unlock(&MUTEX);
     }
-    
-    //CRITICAL REGION
-    lock(&MUTEX);
     desaloca_recurso(recs);
     unlock(&MUTEX);
     //CRITICAL REGION
